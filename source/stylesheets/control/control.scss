@@ -24,6 +24,17 @@ body {
   margin-top: 100px;
 }
 
+.control-group {
+  border: #ffffff 1px solid;
+  border-radius: 5px;
+
+  padding: 10px;
+}
+
+.control-group > .btn, .control-group p .btn {
+  margin-bottom: 5px;
+}
+
 #quick-controls {
   position: fixed;
 
@@ -35,4 +46,8 @@ body {
 
 #quick-controls .btn {
   display: block;
+}
+
+.preset-images img, .preset-videos video {
+  width: 100px;
 }

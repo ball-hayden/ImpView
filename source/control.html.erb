@@ -10,23 +10,25 @@
   </head>
 
   <body>
-    <div id="loader">
-      ImpView is loading...
-    </div>
+    <div class="container">
+      <div id="loader">
+        ImpView is loading...
+      </div>
 
-    <div id="quick-controls" class="control-group">
-      <a id="quick-hide-all" class="btn">Hide All</a>
-      <a id="quick-fade-all" class="btn">Fade Out All</a>
-    </div>
+      <div id="quick-controls" class="control-group">
+        <a id="quick-hide-all" class="btn">Hide All</a>
+        <a id="quick-fade-all" class="btn">Fade Out All</a>
+      </div>
 
-    <%= partial 'control/states' %>
+      <%= partial 'control/states' %>
 
-    <div id="controls" style="display: none">
-      <%= partial 'control/i' %>
-      <%= partial 'control/text' %>
-      <%= partial 'control/image' %>
-      <%= partial 'control/video' %>
-      <%= partial 'control/emoroco' %>
+      <div id="controls" style="display: none">
+        <%= partial 'control/i' %>
+        <%= partial 'control/text' %>
+        <%= partial 'control/image' %>
+        <%= partial 'control/video' %>
+        <%= partial 'control/emoroco' %>
+      </div>
     </div>
   </body>
 </html>

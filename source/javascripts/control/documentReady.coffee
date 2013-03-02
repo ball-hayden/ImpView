@@ -8,6 +8,11 @@ $ ->
 
   $('#loader').text("Waiting for display...");
 
+  $('form').keydown (e) ->
+    if e.keyCode == 13
+      e.preventDefault();
+      return false;
+
   $.each clickHandlers, (i, handler) ->
     handler();
 
