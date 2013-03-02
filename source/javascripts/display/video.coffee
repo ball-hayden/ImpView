@@ -9,10 +9,15 @@ messageHandlers.push (message) ->
 
   switch message.action
     when "play"
+      target$.off 'ended'
+      target$.on 'ended', ->
+        display.sendMessage({ type: "control", target: target, action: "paused", callback: true })
+
       target$[0].play()
-      sendMessage({ type: "control", target: target, action: "playing", callback: true })
+
+      display.sendMessage({ type: "control", target: target, action: "playing", callback: true })
     when "pause"
       target$[0].pause()
-      sendMessage({ type: "control", target: target, action: "paused", callback: true })
+      display.sendMessage({ type: "control", target: target, action: "paused", callback: true })
     when "restart"
       target$[0].currentTime = 0

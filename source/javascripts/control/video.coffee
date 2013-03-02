@@ -8,7 +8,7 @@ onReadys = control.onReadys
 sendMessage = control.sendMessage
 
 callbackHandlers.push (message) ->
-  return unless message.type == "control" && message.target == "image"
+  return unless message.type == "control" && message.target == "video"
 
   switch message.action
     when "playing", "paused"
