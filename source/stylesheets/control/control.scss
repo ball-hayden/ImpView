@@ -22,6 +22,12 @@ body:before {
 
 body {
   margin-top: 100px;
+
+  /*
+   * Put a load of blackspace on the bottom. Largely there to allow
+   * typeahead to play nice.
+   */
+  margin-bottom: 200px;
 }
 
 .control-group {

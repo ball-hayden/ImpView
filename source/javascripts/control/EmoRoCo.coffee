@@ -16,6 +16,23 @@ control.callbackHandlers.push( (message) ->
 )
 
 addEmorocoHandlers = (selector) ->
+  # Add the typeahead
+  text$ = $(selector).find('.emoroco-text')
+  text$.typeahead(
+      source: (query, process) ->
+        $.get 'content/emotions.json', (data) ->
+          # Add the current query to the data.
+          data.unshift(query)
+
+          process(data)
+
+          # Scroll to the bottom of the list
+          typeahead$ = $(selector).find('.typeahead')
+          window.scrollTo(0, typeahead$.offset().top);
+
+          return
+    )
+
   $(selector).find('.emoroco-text').on('keyup', (e) ->
     emorocoEnterHandler(e)
     return
