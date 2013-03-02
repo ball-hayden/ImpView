@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ImpView Control</title>
+
+    <%= stylesheet_link_tag 'control' %>
+
+    <%= javascript_include_tag 'lib/jquery-1.9.1.min' %>
+    <%= javascript_include_tag 'control' %>
+  </head>
+
+  <body>
+    <div id="loader">
+      ImpView is loading...
+    </div>
+
+    <div id="quick-controls" class="control-group">
+      <a id="quick-hide-all" class="btn">Hide All</a>
+      <a id="quick-fade-all" class="btn">Fade Out All</a>
+    </div>
+
+    <%= partial 'control/states' %>
+
+    <div id="controls" style="display: none">
+      <%= partial 'control/i' %>
+      <%= partial 'control/text' %>
+      <%= partial 'control/image' %>
+      <%= partial 'control/video' %>
+      <%= partial 'control/emoroco' %>
+    </div>
+  </body>
+</html>

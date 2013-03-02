@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ImpView Display</title>
+
+    <%= stylesheet_link_tag 'display' %>
+
+    <%= javascript_include_tag 'lib/jquery-1.9.1.min' %>
+    <%= javascript_include_tag 'display' %>
+  </head>
+
+  <body>
+    <div id="loader">
+      ImpView is loading...
+    </div>
+
+    <div class="content">
+      <div class="center video">
+        <video id="video" style="display: none"></video>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="center img">
+        <div id="image" style="display: none"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="center img">
+        <span id="i" style="display: none"></img>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="center">
+        <div id="text" style="display: none"></div>
+      </div>
+    </div>
+  </body>
+</html>

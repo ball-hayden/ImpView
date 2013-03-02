@@ -1,0 +1,93 @@
+@import "compass";
+@import "compass/css3";
+
+@font-face {
+  src: url("Ubuntu-Regular.ttf");
+  font-family: "Ubuntu";
+}
+
+body {
+  background: #000000;
+
+  color: #ededed;
+
+  font-family: "Ubuntu";
+
+  overflow: hidden;
+
+  top: 0px;
+  left: 0px;
+
+  width:  100%;
+  height: 100%;
+}
+
+.content {
+  position: absolute;
+
+  top: 0px;
+  left: 0px;
+
+  width:  100%;
+  height: 100%;
+
+  display: table;
+}
+
+.center {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.center.video {
+  position: relative;
+}
+
+.center.video > video {
+  width:  100%;
+}
+
+.content > .img > * {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: absolute;
+
+  top: 0px;
+  left: 0px;
+
+  width: 100%;
+  height: 100%;
+}
+
+#i {
+  -webkit-mask-image: url('../content/i.png');
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+
+  background-color: #e26b18;
+}
+
+#text {
+  font-size: 120px;
+}
+
+#text div {
+  display: inline-block;
+}
+
+#text .word {
+  white-space:nowrap;
+}
+
+.emoroco-text {
+  font-size: 120px;
+  margin: 0px;
+}
+
+.emoroco-text.transition {
+  @include transition(top 2s, left 2s, opacity 1s, font 1s);
+}

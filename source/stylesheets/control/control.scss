@@ -1,0 +1,38 @@
+body:before {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+
+  content: 'ImpView';
+  font-size: 32px;
+  margin-top: -25px;
+  padding-top: 50px;
+  padding-left: 90px;
+
+  background-image: url('../content/i.png');
+  background-size: 90px 100px;
+  background-repeat: no-repeat;
+  background-position:left;
+
+  height: 100px;
+  width: 90px;
+
+  z-index: -1;
+}
+
+body {
+  margin-top: 100px;
+}
+
+#quick-controls {
+  position: fixed;
+
+  background: #000;
+
+  right: 10px;
+  top: 10px;
+}
+
+#quick-controls .btn {
+  display: block;
+}
