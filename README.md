@@ -5,7 +5,8 @@ ImpView is built using Middleman. Run "middleman build" to regenerate the
 output folder. You will need to run "bundle install" to install any
 dependencies first.
 
-Please submit any patches to hayden@haydenball.me.uk
+Please submit any patches to hayden@haydenball.me.uk using:
+    git format-patch master --stdout > mypatch.patch
 
 Usage
 -----
