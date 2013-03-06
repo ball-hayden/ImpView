@@ -20,7 +20,7 @@ addEmorocoHandlers = (selector) ->
   text$ = $(selector).find('.emoroco-text')
   text$.typeahead(
       source: (query, process) ->
-        $.get 'content/emotions.json', (data) ->
+        $.getJSON 'content/emotions.json', (data) ->
           # Add the current query to the data.
           data.unshift(query)
 
