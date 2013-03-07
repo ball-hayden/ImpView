@@ -1,7 +1,5 @@
 display = window.display
 
-imagePreloader = new Image();
-
 messageHandlers = display.messageHandlers
 
 messageHandlers.push (message) ->
@@ -12,9 +10,15 @@ messageHandlers.push (message) ->
 
   switch message.action
     when "setSource"
-      imagePreloader.onload = ->
+      xhr = new XMLHttpRequest()
+      xhr.open "GET", message.value, true
+      xhr.responseType = "blob"
+      xhr.onload = (e) ->
+        url = window.webkitURL.createObjectURL(@response)
+        target$.css
+          'background-image': 'url("' + url + '")'
+
         display.sendMessage({ type: "control", target:"image", action: "setSource", callback: true })
         return
-      imagePreloader.src=message.value
-      target$.css
-        'background-image': 'url("' + message.value + '")'
+
+      xhr.send()
