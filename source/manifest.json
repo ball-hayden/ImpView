@@ -17,6 +17,7 @@
   },
 
   "permissions": [
+    "fullscreen",
     "https://*/*",
     "http://*/*"
   ]

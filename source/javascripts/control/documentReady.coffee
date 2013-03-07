@@ -28,10 +28,15 @@ $ ->
     onReady();
 
   # Add a confirmation on close
-  window.onbeforeunload = ->
-    return "Please confirm. This will close the display window."
+  unless control.isChromeApp
+    window.onbeforeunload = ->
+      return "Please confirm. This will close the display window."
 
-  window.onunload = ->
-    control.display.close()
+  unless control.isChromeApp
+    window.onunload = ->
+      control.display.close()
+
+  if control.isChromeApp
+    chrome.app.window.current().maximize();
 
   return;
