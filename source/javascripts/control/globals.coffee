@@ -7,3 +7,5 @@ window.control.clickHandlers = [];
 window.control.stateHandlers = [];
 
 window.control.display = null;
+
+window.control.isChromeApp = chrome.app.runtime ? true : false;

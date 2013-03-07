@@ -4,7 +4,12 @@ stateHandlers = control.stateHandlers
 onReadys = control.onReadys
 
 $ ->
-  control.display = window.open('display.html','ImpView Display');
+  if control.isChromeApp
+    # We're running as a packaged app.
+    chrome.app.window.create 'display.html'
+  else
+    # Open a new window normally.
+    control.display = window.open('display.html', 'ImpView Display');
 
   $('#loader').text("Waiting for display...");
 

@@ -1,0 +1,23 @@
+{
+  "name": "ImpView",
+  "version": "0.1.0.0",
+  "manifest_version": 2,
+
+  "description": "The Improverts Visuals Software...",
+  "icons": { "16":  "content/i.png",
+             "48":  "content/i.png",
+             "128": "content/i.png" },
+
+  "app": {
+    "background": {
+      "scripts": [
+      "javascripts/chrome.js"
+      ]
+    }
+  },
+
+  "permissions": [
+    "https://*/",
+    "http://*/"
+  ]
+}

@@ -3,17 +3,27 @@ messageHandlers  = display.messageHandlers
 callbackHandlers = display.callbackHandlers
 
 display.onReadys.push ->
-  window.addEventListener "message", ((event) ->
-    handleMessage(event.data, event.source);
-  ), false
+  if display.isChromeApp
+    chrome.runtime.onMessage.addListener (request) ->
+      handleMessage(request)
+      return
+  else
+    window.addEventListener "message", (event) ->
+      handleMessage(event.data, event.source);
+    , false
 
 display.sendMessage = (messageData) ->
-  display.controller.postMessage JSON.stringify(messageData), "*"
+  msg = JSON.stringify(messageData)
+
+  if display.isChromeApp
+    chrome.runtime.sendMessage null, msg
+  else
+    control.display.postMessage msg, "*"
 
 handleMessage = (data, source) ->
   message = JSON.parse(data)
 
-  console.log "received message: ", event.data
+  console.log "received message: ", data
 
   if message.callback
     $.each callbackHandlers, (i, item) ->

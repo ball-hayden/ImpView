@@ -1,3 +1,9 @@
+
+html {
+  /* for chrome app */
+  overflow-y: scroll;
+}
+
 body:before {
   position: absolute;
   left: 0px;
