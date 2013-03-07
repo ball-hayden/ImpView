@@ -1,6 +1,31 @@
 control = window.control
 
 emo_entries = []
+emotions = []
+
+loadErrorModal = $("""
+                  <div class="modal hide fade">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h3>Warning</h3>
+                    </div>
+                    <div class="modal-body">
+                      <p>The emotions list could not be loaded.</p>
+                      <p>You can safely ignore this, but you won't get the emotions typeahead for EmoRoCo.</p>
+                      <p>
+                        If you are running this from a file rather than a server, this may be because your
+                        browser prevents access to files from files (!).
+                        <br />
+                        In Chrome, this can be corrected by adding the <code>--allow-file-access-from-files</code>
+                        flag.
+                      </p>
+                      <p>Don't shoot the messenger.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+                    </div>
+                  </div>
+                   """)
 
 control.callbackHandlers.push( (message) ->
   return unless message.type == "control"
@@ -20,17 +45,19 @@ addEmorocoHandlers = (selector) ->
   text$ = $(selector).find('.emoroco-text')
   text$.typeahead(
       source: (query, process) ->
-        $.getJSON 'content/emotions.json', (data) ->
-          # Add the current query to the data.
-          data.unshift(query)
+        # Copy the emotions array
+        list = emotions.slice(0)
 
-          process(data)
+        # Add the current query to the data.
+        list.unshift(query)
 
-          # Scroll to the bottom of the list
-          typeahead$ = $(selector).find('.typeahead')
-          window.scrollTo(0, typeahead$.offset().top);
+        process(list)
 
-          return
+        # Scroll to the bottom of the list
+        typeahead$ = $(selector).find('.typeahead')
+        window.scrollTo(0, typeahead$.offset().top);
+
+        return
     )
 
   $(selector).find('.emoroco-text').on('keyup', (e) ->
@@ -103,6 +130,16 @@ control.onReadys.push( ->
     $('.emoroco-entry').each (i, target) ->
       target$ = $(target)
       control.sendMessage({ type: "control", action: "emo-remove", id: target$.data('id') })
+
+  # Fetch the emotions list:
+  $.ajax
+    url: 'content/emotions.json',
+    dataType: 'json',
+    success: (data) ->
+      emotions = data
+    error: ->
+      $("body").append(loadErrorModal)
+      $(loadErrorModal).modal()
 
   return
 )
