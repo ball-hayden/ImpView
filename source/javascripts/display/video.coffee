@@ -8,6 +8,18 @@ messageHandlers.push (message) ->
   target$ = $('#' + target)
 
   switch message.action
+    when "setSource"
+      xhr = new XMLHttpRequest()
+      xhr.open "GET", message.value, true
+      xhr.responseType = "blob"
+      xhr.onload = (e) ->
+        url = window.webkitURL.createObjectURL(@response)
+        target$.attr('src', url)
+
+        display.sendMessage({ type: "control", target:"video", action: "setSource", callback: true })
+        return
+
+      xhr.send()
     when "play"
       target$.off 'ended'
       target$.on 'ended', ->
@@ -21,3 +33,18 @@ messageHandlers.push (message) ->
       display.sendMessage({ type: "control", target: target, action: "paused", callback: true })
     when "restart"
       target$[0].currentTime = 0
+
+display.onReadys.push ->
+  video = $('#video')[0]
+  video.onerror = ->
+    e = video.error
+
+    switch e.code
+      when e.MEDIA_ERR_DECODE
+        nice_error = "Video couldn't be decoded. Codec may not be supported"
+      when e.MEDIA_ERR_SRC_NOT_SUPPORTED
+        nice_error = "This video format isn't supported"
+      else
+        nice_error = "An unknown error occurred"
+
+    display.sendMessage({ type: "error", target: "video", value: nice_error, callback: true })

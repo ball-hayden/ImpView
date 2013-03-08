@@ -18,8 +18,6 @@ messageHandlers.push (message) ->
       target$.text(message.value)
     when "setColor"
       target$.css({ color: message.value })
-    when "setSource"
-      target$.attr('src', message.value) unless target == "image"
     when "fadeIn"
       target$.fadeIn(1000, -> display.sendVisibility(message.target));
     when "fadeOut"

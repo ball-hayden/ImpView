@@ -8,11 +8,16 @@ onReadys = control.onReadys
 sendMessage = control.sendMessage
 
 callbackHandlers.push (message) ->
-  return unless message.type == "control" && message.target == "video"
+  return unless message.target == "video"
 
-  switch message.action
-    when "playing", "paused"
-      $('#' + message.target + '-play-state').val(message.action).change()
+  if message.type == "control"
+    switch message.action
+      when "setSource"
+        $('#controls-video-loader').text("Loaded")
+      when "playing", "paused"
+        $('#' + message.target + '-play-state').val(message.action).change()
+  else if message.type == "error"
+    $('#controls-video-loader').text(message.value)
 
 clickHandlers.push ->
   $('#controls-show-hide-video').click ->
@@ -83,4 +88,13 @@ onReadys.push ->
     return if video_src == $('#video-input').val()
 
     video_src = $('#video-input').val()
+    $('#controls-video-loader').text("Loading...")
     sendMessage({ type: "control", target:"video", action: "setSource", value: video_src })
+
+  $('#video-file').change ->
+    input = $('#video-file')[0]
+    url = window.webkitURL.createObjectURL(input.files[0])
+
+    $('#video-input').val(url)
+    $('#controls-video-loader').text("Loading...")
+    sendMessage({ type: "control", target:"video", action: "setSource", value: url })
