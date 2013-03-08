@@ -6,4 +6,8 @@ window.display.callbackHandlers = [];
 
 window.display.controller = null;
 
-window.display.isChromeApp = chrome.app.runtime ? true : false;
+window.display.isChromeApp = false;
+
+if chrome?
+  if chrome.app.runtime?
+    window.display.isChromeApp = true;

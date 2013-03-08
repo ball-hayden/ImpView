@@ -18,7 +18,7 @@ display.sendMessage = (messageData) ->
   if display.isChromeApp
     chrome.runtime.sendMessage null, msg
   else
-    control.display.postMessage msg, "*"
+    display.controller.postMessage msg, "*"
 
 handleMessage = (data, source) ->
   message = JSON.parse(data)
