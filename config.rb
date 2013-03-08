@@ -49,6 +49,9 @@
 
 activate :relative_assets
 
+require 'lib/EmotionBuilder'
+activate :emotion_builder
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
