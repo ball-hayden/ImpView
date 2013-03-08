@@ -24,7 +24,9 @@ addEmorocoHandlers = (selector) ->
         # Copy the emotions array
         list = emotions.slice(0)
 
-        # Add the current query to the data.
+        # Add the current query to the data (but titleize it first).
+        query = query.replace /\w*/g, (txt) ->
+          txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
         list.unshift(query)
 
         process(list)
