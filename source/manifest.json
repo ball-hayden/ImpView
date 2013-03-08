@@ -3,6 +3,8 @@
   "version": "0.1.0.0",
   "manifest_version": 2,
 
+  "update_url": "http://haydenball.me.uk/impview/updates.xml",
+
   "description": "The Improverts Visuals Software...",
   "icons": { "16":  "content/i.png",
              "48":  "content/i.png",
