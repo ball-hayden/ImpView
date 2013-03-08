@@ -3,30 +3,6 @@ control = window.control
 emo_entries = []
 emotions = []
 
-loadErrorModal = $("""
-                  <div class="modal hide fade">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h3>Warning</h3>
-                    </div>
-                    <div class="modal-body">
-                      <p>The emotions list could not be loaded.</p>
-                      <p>You can safely ignore this, but you won't get the emotions typeahead for EmoRoCo.</p>
-                      <p>
-                        If you are running this from a file rather than a server, this may be because your
-                        browser prevents access to files from files (!).
-                        <br />
-                        In Chrome, this can be corrected by adding the <code>--allow-file-access-from-files</code>
-                        flag.
-                      </p>
-                      <p>Don't shoot the messenger.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-                    </div>
-                  </div>
-                   """)
-
 control.callbackHandlers.push( (message) ->
   return unless message.type == "control"
 
@@ -137,9 +113,6 @@ control.onReadys.push( ->
     dataType: 'json',
     success: (data) ->
       emotions = data
-    error: ->
-      $("body").append(loadErrorModal)
-      $(loadErrorModal).modal()
 
   return
 )

@@ -11,9 +11,12 @@ callbackHandlers.push (message) ->
   # Image specific callback handlers
   return unless message.target == "image"
 
-  switch message.action
-    when "setSource"
-      $('#controls-image-loader').text("Loaded")
+  if message.type == "control"
+    switch message.action
+      when "setSource"
+        $('#controls-image-loader').text("Loaded")
+  else if message.type == "error"
+    $('#controls-image-loader').text(message.value)
 
 clickHandlers.push ->
   $('#controls-show-hide-image').click ->

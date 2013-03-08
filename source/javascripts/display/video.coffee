@@ -9,15 +9,32 @@ messageHandlers.push (message) ->
 
   switch message.action
     when "setSource"
+      error = (status) ->
+        switch status
+          when 404
+            message = "Video not found"
+          when 500
+            message = "Server-side error loading video"
+          else
+            message = "Unknown error loading video"
+
+        display.sendMessage({ type: "error", target: "video", value: message, callback: true })
+
       xhr = new XMLHttpRequest()
       xhr.open "GET", message.value, true
       xhr.responseType = "blob"
       xhr.onload = (e) ->
-        url = window.webkitURL.createObjectURL(@response)
-        target$.attr('src', url)
+        if e.target.status == 200
+          url = window.webkitURL.createObjectURL(@response)
+          target$.attr('src', url)
 
-        display.sendMessage({ type: "control", target:"video", action: "setSource", callback: true })
+          display.sendMessage({ type: "control", target:"video", action: "setSource", callback: true })
+        else
+          error e.target.status
+
         return
+      xhr.onerror = (e) ->
+        error e.target.status
 
       xhr.send()
     when "play"
