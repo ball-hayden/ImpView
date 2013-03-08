@@ -52,3 +52,11 @@ onReadys.push ->
     img_src = $('#image-input').val()
     $('#controls-image-loader').text("Loading...")
     sendMessage({ type: "control", target:"image", action: "setSource", value: img_src })
+
+  $('#image-file').change ->
+    input = $('#image-file')[0]
+    url = window.webkitURL.createObjectURL(input.files[0])
+
+    $('#image-input').val(url)
+    $('#controls-image-loader').text("Loading...")
+    sendMessage({ type: "control", target:"image", action: "setSource", value: url })
