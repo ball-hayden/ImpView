@@ -16,7 +16,7 @@
 
 .spin {
   -webkit-animation-name: spin;
-  -webkit-animation-duration:0.5s;
+  -webkit-animation-duration: 0.5s !important;
   -webkit-animation-timing-function:linear;
 }
 
