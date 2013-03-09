@@ -22,20 +22,24 @@ control.sendMessage = (messageData) ->
     control.display.postMessage msg, "*"
 
 handleMessage = (data) ->
-  message = JSON.parse(data)
+  try
+    message = JSON.parse(data)
 
-  console.log "received message: ", data
+    console.log "received message: ", data
 
-  if message.callback
-    $.each callbackHandlers, (i, item) ->
-      item(message)
+    if message.callback
+      $.each callbackHandlers, (i, item) ->
+        item(message)
+        return
       return
-    return
-  else
-    $.each messageHandlers, (i, item) ->
-      item(message)
+    else
+      $.each messageHandlers, (i, item) ->
+        item(message)
+        return
       return
-    return
+
+  catch e
+    control.showError e.msg, e.url, e.line, e.stack
 
 messageHandlers.push (message) ->
   switch message.type

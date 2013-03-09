@@ -21,20 +21,24 @@ display.sendMessage = (messageData) ->
     display.controller.postMessage msg, "*"
 
 handleMessage = (data, source) ->
-  message = JSON.parse(data)
+  try
+    message = JSON.parse(data)
 
-  console.log "received message: ", data
+    console.log "received message: ", data
 
-  if message.callback
-    $.each callbackHandlers, (i, item) ->
-      item(message)
+    if message.callback
+      $.each callbackHandlers, (i, item) ->
+        item(message)
+        return
       return
-    return
-  else
-    $.each messageHandlers, (i, item) ->
-      item(message)
+    else
+      $.each messageHandlers, (i, item) ->
+        item(message)
+        return
       return
-    return
+
+  catch e
+    display.sendError e.msg, e.url, e.line, e.stack
 
 callbackHandlers.push (message) ->
   switch message.type
