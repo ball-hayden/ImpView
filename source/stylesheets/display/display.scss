@@ -63,12 +63,7 @@ body {
 }
 
 #i {
-  -webkit-mask-image: url('../content/i.png');
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-
-  background-color: #e26b18;
+  background-image: url('../content/i.png');
 }
 
 #text {

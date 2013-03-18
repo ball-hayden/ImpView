@@ -1,3 +1,14 @@
+#i.colourChase {
+  background-image: none;
+
+  -webkit-mask-image: url('../content/mask.png');
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+
+  background-color: #e26b18;
+}
+
 .colourChase {
   -webkit-animation: colourChase 3s;
   -webkit-animation-timing-function:linear;
