@@ -23,11 +23,11 @@
       <%= partial 'control/states' %>
 
       <div id="controls" style="display: none">
-        <%= partial 'control/i' %>
-        <%= partial 'control/text' %>
-        <%= partial 'control/image' %>
-        <%= partial 'control/video' %>
-        <%= partial 'control/emoroco' %>
+        <%= partial 'control/i',       locals: { shortcut: 1 } %>
+        <%= partial 'control/text',    locals: { shortcut: 2 } %>
+        <%= partial 'control/image',   locals: { shortcut: 3 } %>
+        <%= partial 'control/video',   locals: { shortcut: 4 } %>
+        <%= partial 'control/emoroco', locals: { shortcut: 5 } %>
       </div>
     </div>
   </body>

@@ -60,6 +60,10 @@ body {
   height: 2.8em;
 }
 
+.control-group.active {
+  background-color: lighten(#000000, 20);
+}
+
 #quick-controls {
   position: fixed;
 
