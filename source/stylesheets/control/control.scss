@@ -49,6 +49,8 @@ body {
   border-radius: 5px;
 
   padding: 10px;
+
+  transition: border linear .5s, box-shadow linear .5s;
 }
 
 .control-group > .btn, .control-group p .btn {
