@@ -59,6 +59,10 @@ onReadys.push ->
 
   addKeyboardHandlers()
 
+  # Escape Handler
+  body$.on 'keydown', (e) ->
+    $('#quick-hide-all').click()
+
   $('.disable-shortcuts').each (i, item) ->
     item$ = $(item)
 

@@ -61,7 +61,39 @@ body {
 }
 
 .control-group.active {
-  background-color: lighten(#000000, 20);
+  border: #33FF33 1px solid;
+}
+
+*[data-shortcut] {
+  position: relative;
+}
+
+[data-shortcut]:before {
+  position: absolute;
+
+  top:    5px;
+  right: 10px;
+
+  text-transform:uppercase;
+
+  font-weight: bold;
+}
+
+.control-group *[data-shortcut]:before {
+  top:    1em;
+  bottom: 0px;
+  left:   0px;
+  right:  0px;
+
+  color: #bbbbbb;
+}
+
+.control-group[data-shortcut]:before {
+  content:  attr(data-shortcut);
+}
+
+.control-group.active [data-shortcut]:before {
+  content:  attr(data-shortcut);
 }
 
 #quick-controls {
