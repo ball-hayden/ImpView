@@ -25,7 +25,7 @@ addKeyboardHandlers = ->
       activeHandlers = []
 
       body$.animate
-          scrollTop: item$.offset().top + 'px'
+          scrollTop: item$.offset().top - 30 + 'px'
         , 'fast'
 
       children = item$.find('*[data-shortcut]')

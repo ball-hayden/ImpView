@@ -61,14 +61,15 @@ body {
 }
 
 .control-group.active {
-  border: #33FF33 1px solid;
+  border: rgba(51, 255, 51, 1) 1px solid;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 20px rgba(51, 255, 51, .8);
 }
 
 *[data-shortcut] {
   position: relative;
 }
 
-[data-shortcut]:before {
+[data-shortcut]::before {
   position: absolute;
 
   top:    5px;
@@ -79,7 +80,7 @@ body {
   font-weight: bold;
 }
 
-.control-group *[data-shortcut]:before {
+.control-group *[data-shortcut]::before {
   top:    1em;
   bottom: 0px;
   left:   0px;
@@ -88,11 +89,11 @@ body {
   color: #bbbbbb;
 }
 
-.control-group[data-shortcut]:before {
+.control-group[data-shortcut]::before {
   content:  attr(data-shortcut);
 }
 
-.control-group.active [data-shortcut]:before {
+.control-group.active [data-shortcut]::before {
   content:  attr(data-shortcut);
 }
 
