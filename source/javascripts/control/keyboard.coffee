@@ -69,8 +69,10 @@ onReadys.push ->
 
   # Escape Handler
   body$.on 'keydown', (e) ->
-    return unless e.keyCode == 27
-    $('#quick-hide-all').click()
+    if e.keyCode == 27
+      $('#quick-hide-all').click()
+    else if e.keyCode == 192
+      $('#quick-fade-all').click()
 
   $('.disable-shortcuts').each (i, item) ->
     item$ = $(item)
