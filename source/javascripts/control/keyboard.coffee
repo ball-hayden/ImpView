@@ -34,11 +34,19 @@ addKeyboardHandlers = ->
         cshortcut = child$.data('shortcut')
         ckeycode = cshortcut.toString().toUpperCase().charCodeAt(0)
 
-        #An oddity... for some reason chrome converts backslash to something odd...
+        #An oddity... for some reason chrome converts these incorrectly.
         if ckeycode == 92
+          # Backslash
           ckeycode = 220
         if ckeycode == 47
+          # Forward Slash
           ckeycode = 191
+        if ckeycode == 44
+          # Comma
+          ckeycode = 188
+        if ckeycode == 46
+          # Period
+          ckeycode = 190
 
         handler = (e) ->
           return unless e.keyCode == ckeycode
@@ -61,6 +69,7 @@ onReadys.push ->
 
   # Escape Handler
   body$.on 'keydown', (e) ->
+    return unless e.keyCode == 27
     $('#quick-hide-all').click()
 
   $('.disable-shortcuts').each (i, item) ->
