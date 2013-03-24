@@ -8,6 +8,13 @@ activeHandlers = []
 addKeyboardHandlers = ->
   body$ = $('body')
 
+  # Escape Handler
+  body$.on 'keydown', (e) ->
+    if e.keyCode == 27
+      $('#quick-hide-all').click()
+    else if e.keyCode == 192
+      $('#quick-fade-all').click()
+
   $('.control-group[data-shortcut]').each (i, item) ->
     item$ = $(item)
     shortcut = item$.data('shortcut')
@@ -66,13 +73,6 @@ onReadys.push ->
   body$ = $('body')
 
   addKeyboardHandlers()
-
-  # Escape Handler
-  body$.on 'keydown', (e) ->
-    if e.keyCode == 27
-      $('#quick-hide-all').click()
-    else if e.keyCode == 192
-      $('#quick-fade-all').click()
 
   $('.disable-shortcuts').each (i, item) ->
     item$ = $(item)
