@@ -67,6 +67,15 @@ body {
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 20px rgba(226, 107, 24, .8);
 }
 
+.preset-images a, .preset-videos a {
+  display: inline-block;
+}
+
+.preset-images a[data-shortcut]::before, .preset-videos a[data-shortcut]::before {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
 *[data-shortcut] {
   position: relative;
 }
@@ -78,6 +87,7 @@ body {
   right: 10px;
 
   text-transform:uppercase;
+  text-align: center;
 
   font-weight: bold;
 }

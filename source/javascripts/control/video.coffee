@@ -50,8 +50,8 @@ clickHandlers.push ->
     sendMessage({ type: "control", target: "video", action: "pause" })
     sendMessage({ type: "control", target: "video", action: "restart" })
 
-  $('.preset-videos video').click (e) ->
-      video = e.target
+  $('.preset-videos a').click (e) ->
+      video = $(e.target).find('video')[0]
       $('#video-input').val(video.src)
       $('#video-input').keyup()
 
