@@ -1,11 +1,18 @@
 ImpView
 =======
 
+NB: To put the display into fullscreen mode (if it is running as an extension)
+press spacebar.
+
 ImpView is built using Middleman. Run "middleman build" to regenerate the
 output folder. You will need to run "bundle install" to install any
 dependencies first.
 
-Please submit any patches to hayden@haydenball.me.uk using:
+Please submit any patches via the issue tracker at
+http://redmine.haydenball.me.uk/projects/impview/.
+
+Hint:
+
     git format-patch master --stdout > mypatch.patch
 
 Usage
