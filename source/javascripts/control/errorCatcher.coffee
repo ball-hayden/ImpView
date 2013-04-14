@@ -17,6 +17,14 @@ control.showError = (msg, url, line, trace) ->
                   <h3>Well... this is embarrassing</h3>
                 </div>
                 <div class="modal-body">
+                  <p>
+                    *Please* report this
+                    <a href="http://redmine.haydenball.me.uk/projects/impview/issues/new">here</a>.
+                    Don't forget to include your browser version and all of the details below. Thanks.
+                  </p>
+
+                  <hr />
+
                   <p>An error has occurred in #{url} on line #{line}</p>
                   <pre>
 #{msg}
