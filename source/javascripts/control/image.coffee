@@ -32,7 +32,7 @@ clickHandlers.push ->
       sendMessage({ type: "control", target: "image", action: "fadeOut" })
 
   $('.preset-images a').click (e) ->
-      img = $(e.target).find('img')[0]
+      img = $(e.currentTarget).find("img")[0]
       $('#image-input').val(img.src)
       $('#image-input').keyup()
 
