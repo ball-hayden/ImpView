@@ -25,6 +25,21 @@
   100%  { background-color: #ff0000; }
 }
 
+.moveAbout {
+  -webkit-animation-name: moveAbout;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes moveAbout {
+	0% { -webkit-transform: rotateX(-30deg) rotateY(30deg); }
+    25% { -webkit-transform: rotateX(30deg) rotateY(30deg); }
+    50% { -webkit-transform: rotateX(30deg) rotateY(-30deg); }
+    75%   { -webkit-transform: rotateX(-30deg) rotateY(-30deg); }
+    100% { -webkit-transform: rotateX(-30deg) rotateY(30deg); }
+}
+
 .spin {
   -webkit-animation-name: spin;
   -webkit-animation-duration: 0.5s !important;
