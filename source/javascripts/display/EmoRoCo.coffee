@@ -36,6 +36,7 @@ display.messageHandlers.push( (message, target, target$) ->
       current$.removeClass('transition')
       current$.fadeOut(1000, ->
         display.sendMessage({ type: "control", action: "emo-remove", id: current$.data('id'), callback: true })
+        delete emoroco_texts[current$.data('id')]
         current$.remove()
       )
 
@@ -47,6 +48,8 @@ display.messageHandlers.push( (message, target, target$) ->
         'font-size':   ''
     when "emo-remove"
       text$ = emoroco_texts[message.id]
+      return unless text$?
+      delete emoroco_texts[message.id]
       text$.removeClass('transition')
       text$.fadeOut(1000, ->
         display.sendMessage({ type: "control", action: "emo-remove", id: text$.data('id'), callback: true })
