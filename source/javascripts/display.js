@@ -3,4 +3,5 @@
 //
 //= require display/globals
 //= require display/messaging
+//= require Markdown.Converter.js
 //= require_tree ./display

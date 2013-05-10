@@ -15,7 +15,8 @@ messageHandlers.push (message) ->
       target$.show();
       display.sendVisibility(message.target)
     when "setValue"
-      target$.text(message.value)
+      if target != "credits"
+        target$.text(message.value)
     when "setColor"
       target$.css({ color: message.value })
     when "fadeIn"

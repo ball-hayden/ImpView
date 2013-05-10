@@ -15,8 +15,12 @@ body {
 
   overflow: hidden;
 
+  position: absolute;
+
   top: 0px;
+  bottom: 0px;
   left: 0px;
+  right: 0px;
 
   width:  100%;
   height: 100%;
@@ -76,6 +80,19 @@ body {
 
 #text .word {
   white-space:nowrap;
+}
+
+#credits {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  color: rgba(226, 107, 24, 1);
+
+  p {
+    margin: 0;
+  }
 }
 
 .emoroco-text {
