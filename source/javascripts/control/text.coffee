@@ -15,8 +15,7 @@ addTextTypeahead = ->
       list = games.slice(0)
 
       # Add the current query to the data (but titleize it first).
-      query = query.replace /(\w|')*/g, (txt) ->
-        txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      query = titleize(query)
       list.unshift(query)
 
       process(list)
@@ -40,6 +39,13 @@ clickHandlers.push ->
       sendMessage({ type: "control", target: "text", action: "fadeIn" })
     else
       sendMessage({ type: "control", target: "text", action: "fadeOut" })
+
+  $('#controls-spellcheck-text').click ->
+    $text = $('#text-input')
+    control.spellcheck $text.val(), (responses) ->
+      $text.val titleize(responses[0])
+      $text.focus()
+      $text.keyup()
 
 stateHandlers.push ->
   $('#text-state').change ->
@@ -69,3 +75,7 @@ onReadys.push ->
   addTextTypeahead()
 
   return
+
+titleize = (string) ->
+  string.replace /(\w|')*/g, (txt) ->
+    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
