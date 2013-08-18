@@ -52,6 +52,9 @@ activate :relative_assets
 require 'lib/EmotionBuilder'
 activate :emotion_builder
 
+require 'lib/GamesBuilder'
+activate :games_builder
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'

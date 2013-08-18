@@ -6,6 +6,28 @@ onReadys = control.onReadys
 
 sendMessage = control.sendMessage
 
+games = []
+addTextTypeahead = ->
+  text$ = $('#text-input')
+  text$.typeahead
+    source: (query, process) ->
+      # Copy the games array
+      list = games.slice(0)
+
+      # Add the current query to the data (but titleize it first).
+      query = query.replace /(\w|')*/g, (txt) ->
+        txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      list.unshift(query)
+
+      process(list)
+
+      return
+
+    updater: (item) ->
+      sendMessage({ type: "control", target:"text", action: "setValue", value: item })
+
+      return item
+
 clickHandlers.push ->
   $('#controls-show-hide-text').click ->
     if $('#text-state').val() == "hidden"
@@ -18,10 +40,6 @@ clickHandlers.push ->
       sendMessage({ type: "control", target: "text", action: "fadeIn" })
     else
       sendMessage({ type: "control", target: "text", action: "fadeOut" })
-
-  $('.preset-text a').click (e) ->
-    $('#text-input').val($(e.target).text())
-    $('#text-input').keyup()
 
 stateHandlers.push ->
   $('#text-state').change ->
@@ -40,3 +58,14 @@ onReadys.push ->
 
   $('#text-color').change ->
     sendMessage({ type: "control", target:"text", action: "setColor", value: $('#text-color').val() })
+
+  # Fetch the games list:
+  $.ajax
+    url: 'content/games.json',
+    dataType: 'json',
+    success: (data) ->
+      games = data
+
+  addTextTypeahead()
+
+  return
