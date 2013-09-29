@@ -6,10 +6,11 @@ module GamesBuilder
     def registered(app)
 
       app.after_build do |builder|
-        emotions = CSV.read(File.join(root, "games.csv"))
+        emotions = File.read(File.join(root, "games.txt"))
+        emotions = emotions.split(/\n/)
 
-        # Select the first column, and titleize
-        emotions = emotions.map { |s| s[0].titleize }
+        # Titleize
+        emotions = emotions.map { |s| s.titleize }
 
         # Remove duplicates and sort.
         emotions = emotions.uniq.sort
