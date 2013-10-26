@@ -1,0 +1,48 @@
+.alphabet {
+  list-style: none;
+
+  display: inline-block;
+  width:   175px;
+
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateX(13deg);
+}
+
+.alphabet li {
+  position: absolute;
+
+  font-size: 120px;
+
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 30px;
+
+  width: 120px;
+
+  text-align: center;
+}
+
+.alphabet li.current {
+  margin-top:  -20px;
+  margin-left: -20px;
+  font-size: 160px;
+  width:     160px;
+}
+
+@for $i from 1 through 26 {
+  .alphabet li:nth-child(#{$i}) {
+    -webkit-transform: rotateY(-($i - 1) * 13.85deg) translateZ(600px);
+  }
+}
+
+.alphabet.initial {
+  opacity: 0;
+  -webkit-transform: rotateX(-90deg) rotateZ(-90deg);
+}
+
+.alphabet.animate {
+  transition: all 2s;
+
+  li {
+    transition: all 2s;
+  }
+}

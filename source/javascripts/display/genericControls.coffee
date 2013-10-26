@@ -7,6 +7,9 @@ messageHandlers.push (message) ->
   target = message.target
   target$ = $('#' + target)
 
+  # Alphabet handles show hide itself.
+  return if target == "alphabet"
+
   switch message.action
     when "hide"
       target$.hide();
